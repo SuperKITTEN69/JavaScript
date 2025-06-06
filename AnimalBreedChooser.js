@@ -1,7 +1,8 @@
 const readline = require('readline');
 
-const catbrd = ["British Shorthair", "Chartreux", "Persian", "Bengal Cat", "Bombay Cat", "Maine Coon"];
-const dogbrd = ["Boxer", "Bulldog", "Cane Corso", "Beagle", "Borzoi", "Basenji"];
+// Breads
+const catbrd = ["British Shorthair", "Chartreux", "Persian", "Bengal Cat", "Bombay Cat", "Maine Coon", "Ragdoll"];
+const dogbrd = ["Boxer", "Bulldog", "Cane Corso", "Beagle", "Borzoi", "Basenji", "Pug"];
 
 const rl = readline.createInterface({
   input: process.stdin,
