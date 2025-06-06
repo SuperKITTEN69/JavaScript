@@ -1,3 +1,5 @@
+console.log("Tip: Check the script to see the available animal breeds.\n");
+
 const readline = require('readline');
 
 // Cat breed info
@@ -30,7 +32,7 @@ const catBreeds = {
   "maine coon": {
     origin: "United States",
     temperament: "Gentle, Friendly, Playful",
-    description: "One of the largest domestic cats; fluffy, kind, and dog-like."
+    description: "The largest domestic cat, fluffy, kind."
   },
   "ragdoll": {
     origin: "United States",
