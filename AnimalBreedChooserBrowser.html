@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Breed Chooser</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    select, button {
+      padding: 5px;
+      margin-top: 10px;
+    }
+    #breedInfo {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Animal Breed Chooser</h1>
+  
+  <label for="animalType">Do you prefer cats or dogs?</label>
+  <select id="animalType" onchange="updateBreedOptions()">
+    <option value="">-- Select --</option>
+    <option value="cats">Cats</option>
+    <option value="dogs">Dogs</option>
+  </select>
+
+  <br>
+
+  <label for="breedSelect">Choose a breed:</label>
+  <select id="breedSelect" disabled>
+    <option value="">-- Choose animal type first --</option>
+  </select>
+
+  <br>
+  <button onclick="showBreedInfo()">Show Breed Info</button>
+
+  <div id="breedInfo"></div>
+
+  <script>
+    const catBreeds = {
+      "british shorthair": {
+        origin: "United Kingdom",
+        temperament: "Calm, Loyal, Independent",
+        description: "A plush-coated, round-faced cat known for its easygoing nature."
+      },
+      "chartreux": {
+        origin: "France",
+        temperament: "Quiet, Affectionate, Intelligent",
+        description: "Known for its woolly blue-gray coat and sweet personality."
+      },
+      "persian": {
+        origin: "Iran (Persia)",
+        temperament: "Gentle, Quiet, Sweet",
+        description: "Famous for their long fur and round faces, Persians are laid-back companions."
+      },
+      "bengal cat": {
+        origin: "United States",
+        temperament: "Energetic, Alert, Curious",
+        description: "Looks like a wild leopard, but loves to play and climb in your home."
+      },
+      "bombay cat": {
+        origin: "United States",
+        temperament: "Outgoing, Curious, People-oriented",
+        description: "A sleek black cat bred to resemble a mini-panther with a loving attitude."
+      },
+      "maine coon": {
+        origin: "United States",
+        temperament: "Gentle, Friendly, Playful",
+        description: "The largest domestic cat, fluffy, kind."
+      },
+      "ragdoll": {
+        origin: "United States",
+        temperament: "Docile, Affectionate, Relaxed",
+        description: "Known for going limp when picked up, they’re sweet and cuddly."
+      }
+    };
+
+    const dogBreeds = {
+      "boxer": {
+        origin: "Germany",
+        temperament: "Energetic, Friendly, Loyal",
+        description: "A strong, playful dog with a protective nature and boundless energy."
+      },
+      "bulldog": {
+        origin: "England",
+        temperament: "Gentle, Calm, Courageous",
+        description: "Stocky and loyal, Bulldogs are loving companions with a laid-back attitude."
+      },
+      "cane corso": {
+        origin: "Italy",
+        temperament: "Protective, Intelligent, Reserved",
+        description: "A muscular guardian dog known for its devotion and strength."
+      },
+      "beagle": {
+        origin: "United Kingdom",
+        temperament: "Curious, Merry, Friendly",
+        description: "Small hounds with great noses and friendly personalities."
+      },
+      "borzoi": {
+        origin: "Russia",
+        temperament: "Elegant, Quiet, Independent",
+        description: "Graceful and swift, Borzois are sighthounds with a calm temperament."
+      },
+      "basenji": {
+        origin: "Central Africa",
+        temperament: "Independent, Alert, Quiet",
+        description: "Known as the 'barkless dog', Basenjis are clever and catlike."
+      },
+      "pug": {
+        origin: "China",
+        temperament: "Charming, Mischievous, Loving",
+        description: "Small dogs with big personalities and signature wrinkly faces."
+      }
+    };
+
+    function updateBreedOptions() {
+      const animalType = document.getElementById("animalType").value;
+      const breedSelect = document.getElementById("breedSelect");
+
+      breedSelect.innerHTML = '';
+      breedSelect.disabled = false;
+
+      let breeds = {};
+      if (animalType === "cats") {
+        breeds = catBreeds;
+      } else if (animalType === "dogs") {
+        breeds = dogBreeds;
+      } else {
+        breedSelect.disabled = true;
+        return;
+      }
+
+      for (let breed in breeds) {
+        const option = document.createElement("option");
+        option.value = breed;
+        option.textContent = capitalizeWords(breed);
+        breedSelect.appendChild(option);
+      }
+    }
+
+    function showBreedInfo() {
+      const type = document.getElementById("animalType").value;
+      const breed = document.getElementById("breedSelect").value;
+      const infoDiv = document.getElementById("breedInfo");
+
+      let breedInfo;
+      if (type === "cats") {
+        breedInfo = catBreeds[breed];
+      } else if (type === "dogs") {
+        breedInfo = dogBreeds[breed];
+      }
+
+      if (breedInfo) {
+        infoDiv.innerHTML = `
+          <h3>${capitalizeWords(breed)}</h3>
+          <p><strong>Origin:</strong> ${breedInfo.origin}</p>
+          <p><strong>Temperament:</strong> ${breedInfo.temperament}</p>
+          <p><strong>Description:</strong> ${breedInfo.description}</p>
+        `;
+      } else {
+        infoDiv.innerHTML = `<p>Please select a valid breed.</p>`;
+      }
+    }
+
+    function capitalizeWords(str) {
+      return str.replace(/\b\w/g, c => c.toUpperCase());
+    }
+  </script>
+</body>
+</html>
