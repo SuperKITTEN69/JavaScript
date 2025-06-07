@@ -128,5 +128,3 @@ rl.question("Do you prefer cats or dogs? ", (preference) => {
     rl.close();
   }
 });
-
-// All info was taken from the internet, im sorry if something is wrong.
