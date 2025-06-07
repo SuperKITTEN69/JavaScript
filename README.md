@@ -14,3 +14,5 @@ Bear.js - A very simple script that ask if you like bears.
 PasswordGenerator.js - Generates a password.
 
 ToDoListBrowser.html - same as ToDoList.js but in your browser.
+
+SystemInfo.js - A simple script that shows system information.
