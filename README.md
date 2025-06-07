@@ -1,4 +1,6 @@
 # You need to install NodeJS to be able to use these scripts. (https://nodejs.org)
+
+#In case you wanna use the HTML files you won't need NodeJS!
 ________________________________________________________________________________
 
 AnimalBreedChooser.js - Helps you choose which breed of animal to get.
